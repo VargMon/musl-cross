@@ -41,6 +41,7 @@ MPFR_VERSION=2.4.2
 # be set to a git tag and MUSL_GIT set to yes in config.sh
 MUSL_DEFAULT_VERSION=0.9.14
 MUSL_GIT_VERSION=c47e7062ddc1c3aa24db071db0f4d1dca792f325
+MUSL_GIT_REPO='git://repo.or.cz/musl.git'
 MUSL_VERSION="$MUSL_DEFAULT_VERSION"
 MUSL_GIT=no
 
@@ -169,7 +170,7 @@ gitfetchextract() {
 muslfetchextract() {
     if [ "$MUSL_GIT" = "yes" ]
     then
-        gitfetchextract 'git://repo.or.cz/musl.git' $MUSL_VERSION musl-$MUSL_VERSION
+        gitfetchextract "$MUSL_GIT_REPO" $MUSL_VERSION musl-$MUSL_VERSION
     else
         fetchextract http://www.musl-libc.org/releases/ musl-$MUSL_VERSION .tar.gz
     fi
